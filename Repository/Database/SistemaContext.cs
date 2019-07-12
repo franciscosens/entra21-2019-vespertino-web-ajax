@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Repository.Database
 {
-    public class AppContext : DbContext
+    public class SistemaContext : DbContext
     {
-        public DbSet<Hospital> Hospitais;
+        public SistemaContext() : base("DefaultConnection")
+        {
+        }
+
+        public DbSet<Hospital> Hospitais { get; set; }
     }
 }
