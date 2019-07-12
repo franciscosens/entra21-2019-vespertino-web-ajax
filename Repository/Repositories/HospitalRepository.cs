@@ -77,6 +77,7 @@ namespace Repository.Repositories
             
             return (from hospital in context.Hospitais
                     where 
+                        hospital.RegistroAtivo == true && 
                         (hospital.RazaoSocial.Contains(busca) ||
                         hospital.Cnpj.Contains(busca))
                     orderby hospital.RazaoSocial
