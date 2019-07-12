@@ -59,6 +59,7 @@ namespace Repository.Repositories
 
         public int Inserir(Hospital hospital)
         {
+            hospital.DataCriacao = DateTime.Now;
             context.Hospitais.Add(hospital);
             context.SaveChanges();
             return hospital.Id;
@@ -73,7 +74,7 @@ namespace Repository.Repositories
 
         public List<Hospital> ObterTodos(string busca)
         {
-            busca = $"%{busca}%";
+            
             return (from hospital in context.Hospitais
                     where 
                         (hospital.RazaoSocial.Contains(busca) ||
