@@ -10,9 +10,10 @@ $(function () {
             method: 'get',
             success: function (data) {
                 $id = data.Id;
-                $("#campo-razao-social").val("asodjoasndonasodnsa");
+                $("#campo-razao-social").val(data.RazaoSocial);
                 $("#campo-faturamento").val(data.Faturamento);
                 $("#campo-cnpj").val(data.Cnpj);
+                $("#campo-privado").prop("checked",data.Particular);
                 $("#modalCadastroHospital").modal("show");
             }
         })
@@ -34,7 +35,7 @@ $(function () {
             url: '/hospital/obtertodos',
             method: 'get',
             data: {
-                busca : $busca
+                busca: $busca
             },
             success: function (data) {
 
@@ -116,7 +117,7 @@ $(function () {
             error: function (data) {
                 console.log("ERRO");
             }
-        })
+        });
     }
 
     function inserir() {
@@ -134,7 +135,7 @@ $(function () {
                 Particular: $particular
             },
             success: function (data) {
-                $id = data.Id;
+                $id = -1;
                 $("#modalCadastroHospital").modal("hide");
                 obterTodos();
                 limparCampos();
